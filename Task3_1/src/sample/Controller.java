@@ -25,8 +25,8 @@ public class Controller {
         btn.setOnMouseClicked((event -> {
             String[] first = firstInputField.getText().split(" ");
             String[] second = secondInputField.getText().split(" ");
-            MyQueue<Float> firstQueue = new MyQueue<>();
-            MyQueue<Float> secondQueue = new MyQueue<>();
+            MyQueue firstQueue = new MyQueue();
+            MyQueue secondQueue = new MyQueue();
 
             for (String item : first) {
                 firstQueue.add(Float.parseFloat(item));
@@ -44,12 +44,12 @@ public class Controller {
         }));
     }
 
-    public int solutionWithMyQueue(MyQueue<Float> X, MyQueue<Float> Y) throws Exception {
+    public int solutionWithMyQueue(MyQueue X, MyQueue Y) throws Exception {
         int ans = 0;
 
         while (!X.isEmpty() && !Y.isEmpty()) {
-            float x = X.get();
-            float y = Y.get();
+            float x = X.poll();
+            float y = Y.poll();
 
             if (x < y) X.add(x + y);
             else Y.add(x - y);
